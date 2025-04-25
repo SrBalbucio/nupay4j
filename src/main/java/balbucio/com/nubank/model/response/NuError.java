@@ -2,9 +2,10 @@ package balbucio.com.nubank.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 
 @AllArgsConstructor
-@Data
+@Getter
 public enum NuError {
 
     SYSTEM_ERROR("The system can not process this payment now. Please try again later."),

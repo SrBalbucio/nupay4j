@@ -54,7 +54,7 @@ public class NuInvoice {
         @Data
         @Builder
         @ToString
-        public class Details {
+        public static class Details {
             private double taxValue;
         }
     }

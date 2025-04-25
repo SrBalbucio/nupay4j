@@ -8,6 +8,7 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -74,5 +75,13 @@ public class NuTest {
                 .build());
 
         assertNotNull(response);
+    }
+
+    @Test
+    @DisplayName("Pegar um pagamento")
+    @Order(1)
+    @Disabled
+    public void getPaymentStatus() {
+//        Optional<NuSummaryInvoice> summaryInvoice =
     }
 }
