@@ -4,6 +4,7 @@ import balbucio.com.nubank.NuPay;
 import balbucio.com.nubank.model.invoice.NuSummaryInvoice;
 import balbucio.com.nubank.model.ipn.NuNotificationRefundStatus;
 import balbucio.com.nubank.model.ipn.NuNotificationStatus;
+import balbucio.com.nubank.model.refund.NuRefund;
 import balbucio.com.nubank.utils.NuRequester;
 
 import java.util.Optional;
@@ -42,5 +43,14 @@ public class NuNotificationManager {
     public Optional<NuSummaryInvoice> getInvoiceFromNotificationRefundStatus(String body) {
         NuNotificationRefundStatus request = parseNotificationRefundStatus(body);
         return instance.getInvoice(request.getPspReferenceId());
+    }
+
+    public Optional<NuRefund> getRefundFromNotificationRefundStatus(NuNotificationRefundStatus request) {
+        return instance.getRefund(request.getPspReferenceId(), request.getRefundId());
+    }
+
+    public Optional<NuRefund> getRefundFromNotificationRefundStatus(String body) {
+        NuNotificationRefundStatus request = parseNotificationRefundStatus(body);
+        return instance.getRefund(request.getPspReferenceId(), request.getRefundId());
     }
 }
