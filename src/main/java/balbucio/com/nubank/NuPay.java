@@ -200,7 +200,7 @@ public class NuPay {
 
         executor.execute(() -> {
             try {
-                ((CompletableFuture) future).complete(getRefund(pspReferenceId, refundIdO));
+                ((CompletableFuture) future).complete(getRefund(pspReferenceId, refundId));
             } catch (Exception e) {
                 ((CompletableFuture) future).completeExceptionally(e);
             }
