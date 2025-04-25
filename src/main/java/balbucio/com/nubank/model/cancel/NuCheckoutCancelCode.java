@@ -1,0 +1,6 @@
+package balbucio.com.nubank.model.cancel;
+
+public enum NuCheckoutCancelCode {
+
+    ALREADY_CANCELLED, CANCELLED_BY_USER, CANCELLED_BY_SELLER, ALREADY_DENIED, ALREADY_SETTLED, ALREADY_REFUNDED, SYSTEM_ERROR;
+}
