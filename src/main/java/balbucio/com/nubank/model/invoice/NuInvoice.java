@@ -40,6 +40,11 @@ public class NuInvoice {
     private String callbackUrl;
     private String referenceDate;
 
+    @AllArgsConstructor
+    @RequiredArgsConstructor
+    @Builder
+    @ToString
+    @Data
     public static class Price {
         private String currency;
         private double value;

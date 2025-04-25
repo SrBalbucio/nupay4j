@@ -1,5 +1,6 @@
 package balbucio.com.nubank.model.invoice;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.*;
 
 @AllArgsConstructor
@@ -11,7 +12,8 @@ public class NuCheckoutItem {
     @NonNull
     private String id;
     @NonNull
-    private double amount;
+    @SerializedName("value")
+    private double price;
     @NonNull
     private int quantity;
     @NonNull

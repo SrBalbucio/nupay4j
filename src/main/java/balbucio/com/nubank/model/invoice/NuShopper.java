@@ -29,6 +29,7 @@ public class NuShopper {
     }
 
     @AllArgsConstructor
+    @Builder
     @Data
     @ToString
     public static class Phone {
