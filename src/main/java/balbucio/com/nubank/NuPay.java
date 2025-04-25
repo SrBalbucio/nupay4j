@@ -9,9 +9,12 @@ import balbucio.com.nubank.model.config.NuPayConfig;
 import balbucio.com.nubank.model.invoice.NuInvoice;
 import balbucio.com.nubank.model.invoice.NuPaymentMethod;
 import balbucio.com.nubank.model.invoice.NuSummaryInvoice;
+import balbucio.com.nubank.model.refund.NuRefund;
+import balbucio.com.nubank.model.refund.NuRefundRequest;
 import balbucio.com.nubank.model.response.NuPayCheckoutResponse;
 import balbucio.com.nubank.model.response.NuResponseError;
 import balbucio.com.nubank.utils.NuRequester;
+import lombok.Getter;
 import org.json.JSONObject;
 import org.jsoup.Connection;
 
@@ -20,9 +23,11 @@ import java.util.concurrent.*;
 
 public class NuPay {
 
+    @Getter
     private final NuPayConfig config;
     private final NuRequester requester;
     private final Executor executor;
+    @Getter
     private final NuNotificationManager notificationManager;
 
     public NuPay(NuPayConfig config) {
@@ -105,7 +110,7 @@ public class NuPay {
     }
 
     public Optional<NuSummaryInvoice> getInvoice(String pspReferenceId) throws NuException {
-        Connection.Response response = requester.get("/v1/checkouts/" + pspReferenceId + "/status");
+        Connection.Response response = requester.get("v1/checkouts/" + pspReferenceId + "/status");
         if (response.statusCode() == 404) return Optional.empty();
         if (response.statusCode() != 200) {
             NuResponseError error = requester.getResponseError(response);
@@ -146,6 +151,56 @@ public class NuPay {
         executor.execute(() -> {
             try {
                 ((CompletableFuture) future).complete(cancelPayment(pspReferenceId));
+            } catch (Exception e) {
+                ((CompletableFuture) future).completeExceptionally(e);
+            }
+        });
+        return future;
+    }
+
+    public Optional<NuRefund> createRefund(String pspReferenceId, NuRefundRequest request) throws NuException {
+        Connection.Response response = requester.post("v1/checkouts/" + pspReferenceId + "/refunds", request);
+
+        if (response.statusCode() == 404) return Optional.empty();
+        if (response.statusCode() != 200) {
+            NuResponseError error = requester.getResponseError(response);
+            throw new NuRequestException(error);
+        }
+
+        return Optional.ofNullable(requester.getGson().fromJson(response.body(), NuRefund.class));
+    }
+
+    public Future<Optional<NuRefund>> createAsyncRefund(String pspReferenceId, NuRefundRequest request) {
+        Future<Optional<NuRefund>> future = new CompletableFuture<>();
+
+        executor.execute(() -> {
+            try {
+                ((CompletableFuture) future).complete(createRefund(pspReferenceId, request));
+            } catch (Exception e) {
+                ((CompletableFuture) future).completeExceptionally(e);
+            }
+        });
+        return future;
+    }
+
+    public Optional<NuRefund> getRefund(String pspReferenceId, String refundId) throws NuException {
+        Connection.Response response = requester.get("v1/checkouts/" + pspReferenceId + "/refunds/"+refundId);
+
+        if (response.statusCode() == 404) return Optional.empty();
+        if (response.statusCode() != 200) {
+            NuResponseError error = requester.getResponseError(response);
+            throw new NuRequestException(error);
+        }
+
+        return Optional.ofNullable(requester.getGson().fromJson(response.body(), NuRefund.class));
+    }
+
+    public Future<Optional<NuRefund>> getAsyncRefund(String pspReferenceId, String refundId) {
+        Future<Optional<NuRefund>> future = new CompletableFuture<>();
+
+        executor.execute(() -> {
+            try {
+                ((CompletableFuture) future).complete(getRefund(pspReferenceId, refundIdO));
             } catch (Exception e) {
                 ((CompletableFuture) future).completeExceptionally(e);
             }

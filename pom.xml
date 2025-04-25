@@ -6,7 +6,7 @@
 
     <groupId>balbucio.com.nubank</groupId>
     <artifactId>nupay4j</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>NuPay for Java</name>
     <description>Unofficial Java SDK for Nubank's NuPay</description>
 

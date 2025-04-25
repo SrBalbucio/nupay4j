@@ -5,6 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@ToString
 public class NuRefund {
 
     private String refundId;
@@ -13,6 +17,7 @@ public class NuRefund {
     private String transactionRefundId;
     private RefundAmount amount;
     private NuRefundError error;
+    private String source;
 
     @AllArgsConstructor
     @NoArgsConstructor
