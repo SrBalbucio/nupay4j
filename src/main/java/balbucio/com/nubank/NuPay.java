@@ -3,6 +3,7 @@ package balbucio.com.nubank;
 import balbucio.com.nubank.exception.NuException;
 import balbucio.com.nubank.exception.NuInternalError;
 import balbucio.com.nubank.exception.NuRequestException;
+import balbucio.com.nubank.manager.NuNotificationManager;
 import balbucio.com.nubank.model.cancel.NuCancelResponse;
 import balbucio.com.nubank.model.config.NuPayConfig;
 import balbucio.com.nubank.model.invoice.NuInvoice;
@@ -22,6 +23,7 @@ public class NuPay {
     private final NuPayConfig config;
     private final NuRequester requester;
     private final Executor executor;
+    private final NuNotificationManager notificationManager;
 
     public NuPay(NuPayConfig config) {
         this(config, Executors.newCachedThreadPool());
@@ -31,6 +33,7 @@ public class NuPay {
         this.config = config;
         this.requester = new NuRequester(this, config);
         this.executor = executor;
+        this.notificationManager = new NuNotificationManager(this, requester);
     }
 
     public NuPayCheckoutResponse createPayment(NuInvoice invoice) throws NuException {
