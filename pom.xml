@@ -81,12 +81,12 @@
         <repository>
             <id>hyperpowered-maven-releases</id>
             <name>HyperPowered Maven Repository</name>
-            <url>https://maven.hyperpowered.net/releases</url>
+            <url>https://maven.dev.hyperpowered.net/releases</url>
         </repository>
         <snapshotRepository>
             <id>hyperpowered-maven-snapshots</id>
             <name>HyperPowered Maven Repository</name>
-            <url>https://maven.hyperpowered.net/snapshots</url>
+            <url>https://maven.dev.hyperpowered.net/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 
