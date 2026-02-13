@@ -2,7 +2,7 @@
 
 SDK Java não oficial para a API [NuPay for Business](https://docs.nupaybusiness.com.br/) do Nubank. Permite integrar pagamentos NuPay em aplicações Java de forma simples.
 
-[![HyperPowered](https://img.shields.io/badge/HyperPowered-Use%20the%20official%20repository-yellow?color=%23279BF8&cacheSeconds=3600)](https://maven.hyperpowered.net/#/snapshots/balbucio/com/nubank/nupay4j/)
+[![HyperPowered](https://img.shields.io/badge/HyperPowered-Use%20the%20official%20repository-yellow?color=%23279BF8&cacheSeconds=3600)](https://maven.dev.hyperpowered.net/#/snapshots/balbucio/com/nubank/nupay4j/)
 
 > **Importante:** Este projeto ainda está em desenvolvimento e **não foi testado em produção nem em Sandbox** (aguardando liberação de credenciais pela equipe do Nubank). **Não utilize em produção.**
 
@@ -40,13 +40,6 @@ SDK Java não oficial para a API [NuPay for Business](https://docs.nupaybusiness
 Adicione o repositório e a dependência ao seu `pom.xml`:
 
 ```xml
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-</repositories>
-
 <dependencies>
     <dependency>
         <groupId>balbucio.com.nubank</groupId>
@@ -56,7 +49,7 @@ Adicione o repositório e a dependência ao seu `pom.xml`:
 </dependencies>
 ```
 
-> **Nota:** Versões publicadas também estão disponíveis no [repositório HyperPowered](https://maven.hyperpowered.net/#/snapshots/balbucio/com/nubank/nupay4j/).
+> **Nota:** Versões publicadas estão disponíveis no [repositório HyperPowered](https://maven.dev.hyperpowered.net/#/snapshots/balbucio/com/nubank/nupay4j/).
 
 ---
 
