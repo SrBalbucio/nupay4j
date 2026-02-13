@@ -2,7 +2,9 @@ package balbucio.com.nubank.model.response;
 
 import balbucio.com.nubank.model.invoice.NuPaymentMethod;
 import balbucio.com.nubank.model.invoice.NuStatus;
+import lombok.Data;
 
+@Data
 public class NuPayCheckoutResponse {
 
     private String pspReferenceId;

@@ -23,7 +23,7 @@ public class NuRefund {
     @NoArgsConstructor
     @Data
     @ToString
-    public class RefundAmount{
+    public static class RefundAmount {
         private String currency;
         private double value;
     }

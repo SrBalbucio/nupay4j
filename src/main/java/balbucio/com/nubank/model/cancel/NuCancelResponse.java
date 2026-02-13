@@ -1,7 +1,9 @@
 package balbucio.com.nubank.model.cancel;
 
+import lombok.Data;
 import lombok.NonNull;
 
+@Data
 public class NuCancelResponse {
 
     @NonNull

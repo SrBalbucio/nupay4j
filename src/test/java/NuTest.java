@@ -71,6 +71,10 @@ public class NuTest {
                         .build())
                 .merchantOrderReference("123432abc")
                 .referenceId("abc2345")
+                .paymentFlow(NuPaymentFlow.builder()
+                        .returnUrl("https://example.com/return")
+                        .cancelUrl("https://example.com/cancel")
+                        .build())
                 .build());
 
         assertNotNull(response);

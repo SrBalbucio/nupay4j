@@ -95,12 +95,12 @@ public class NuPay {
         return future;
     }
 
-    public Future<NuPayCheckoutResponse> createAsyncPreAuthorizedPayment(NuInvoice invoice) {
+    public Future<NuPayCheckoutResponse> createAsyncPreAuthorizedPayment(NuInvoice invoice, String accessToken) {
         Future<NuPayCheckoutResponse> future = new CompletableFuture<>();
 
         executor.execute(() -> {
             try {
-                ((CompletableFuture) future).complete(createAsyncPreAuthorizedPayment(invoice));
+                ((CompletableFuture) future).complete(createPreAuthorizedPayment(invoice, accessToken));
             } catch (Exception e) {
                 ((CompletableFuture) future).completeExceptionally(e);
             }
