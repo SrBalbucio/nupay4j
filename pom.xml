@@ -41,11 +41,6 @@
             <version>1.18.42</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>balbucio.throwable</groupId>
-            <artifactId>throwable</artifactId>
-            <version>1.2.2</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <dependency>
             <groupId>org.jsoup</groupId>
